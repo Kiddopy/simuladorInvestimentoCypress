@@ -1,0 +1,138 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-04-20T14:18:25.871Z",
+    "end": "2020-04-20T14:18:56.224Z",
+    "duration": 30353,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "31eb35f3-b384-48ee-8c82-3a8cb7d84b5e",
+      "title": "",
+      "fullFile": "cypress\\integration\\testePrincipal.js",
+      "file": "cypress\\integration\\testePrincipal.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "91b95955-ffcb-4bc1-bd0c-f106d5ff856a",
+          "title": "Simulador de investimento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "5e6b1815-4b8b-4e55-aa6a-e37b6b7084e7",
+              "title": "Site do sicredi",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Testar valores na simulação de investimento",
+                  "fullTitle": "Simulador de investimento Site do sicredi Testar valores na simulação de investimento",
+                  "timedOut": null,
+                  "duration": 26567,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request('http://5b847b30db24a100142dce1b.mockapi.io/api/v1/simulador').should(function (response) {\n    var meses = response.body.meses;\n    var valores = response.body.valor;\n    console.log(meses);\n    console.log(valores);\n    meses.forEach(function (mes) {\n        valores.forEach(function (valor) {\n            cy.get(\"#valorAplicar\").type(valor);\n            cy.get(\"#valorInvestir\").type(valor);\n            cy.get(\"#tempo\").type(mes);\n            cy.get(\".simular > .btn\").click();\n            cy.get(\".blocoResultadoSimulacao > .texto\").should('have.text', 'Em ' + mes + ' meses você terá guardado');\n            cy.reload();\n        });\n    });\n});",
+                  "err": {},
+                  "uuid": "7a42289f-441b-436f-917e-deb7d27c5a64",
+                  "parentUUID": "5e6b1815-4b8b-4e55-aa6a-e37b6b7084e7",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Testar valor zerado no formulario",
+                  "fullTitle": "Simulador de investimento Site do sicredi Testar valor zerado no formulario",
+                  "timedOut": null,
+                  "duration": 1492,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.get(\"#valorAplicar\").type(\"00,00\");\ncy.get(\"#valorInvestir\").type(\"00,00\");\ncy.get(\"#tempo\").type(\"12\");\ncy.get(\".simular > .btn\").click();\ncy.get(\"#valorAplicar-error\").should('be.visible');",
+                  "err": {},
+                  "uuid": "567e5c4e-9f8a-42c0-ad4d-8e9149060ccf",
+                  "parentUUID": "5e6b1815-4b8b-4e55-aa6a-e37b6b7084e7",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "7a42289f-441b-436f-917e-deb7d27c5a64",
+                "567e5c4e-9f8a-42c0-ad4d-8e9149060ccf"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 28059,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.1.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.0"
+    },
+    "marge": {
+      "options": {},
+      "version": "5.1.0"
+    }
+  }
+}
