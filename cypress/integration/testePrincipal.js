@@ -3,17 +3,15 @@
 
 describe("Simulador de Investimento", () => {  
 
- 
-
 context("Formulário do simulador de investimento", () =>{
 
     beforeEach(()=>{
-        cy.visit("https://www.sicredi.com.br/html/ferramenta/simulador-investimento-poupanca/");
+        cy.visit(Cypress.env('urlAplicacao'));
     })
   
     it("Testar valores na simulação de investimento", () => {
 
-         cy.request('http://5b847b30db24a100142dce1b.mockapi.io/api/v1/simulador').should((response) => {
+         cy.request(Cypress.env('api')).should((response) => {
             
             var meses = response.body.meses;
             var valores = response.body.valor;
